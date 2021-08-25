@@ -221,8 +221,10 @@ def download_builtin_recipe(urn):
     from calibre.utils.config_base import prefs
     from calibre.utils.https import get_https_resource_securely
     import bz2
+    #recipe_source = bz2.decompress(get_https_resource_securely(
+    #    'https://code.calibre-ebook.com/recipe-compressed/'+urn, headers={'CALIBRE-INSTALL-UUID':prefs['installation_uuid']}))
     recipe_source = bz2.decompress(get_https_resource_securely(
-        'https://code.calibre-ebook.com/recipe-compressed/'+urn, headers={'CALIBRE-INSTALL-UUID':prefs['installation_uuid']}))
+        'https://code.calibre-ebook.com/recipe-compressed/'+urn, headers={}))
     recipe_source = recipe_source.decode('utf-8')
     from calibre.web.feeds.recipes import compile_recipe
     recipe = compile_recipe(recipe_source)  # ensure the downloaded recipe is at least compile-able

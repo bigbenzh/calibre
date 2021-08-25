@@ -39,12 +39,15 @@ def get_newest_version():
         icon_theme_name = json.loads(I('icon-theme.json', data=True))['name']
     except Exception:
         icon_theme_name = ''
+    '''
     headers={
         'CALIBRE-VERSION':__version__,
         'CALIBRE-OS': ('win' if iswindows else 'osx' if ismacos else 'oth'),
         'CALIBRE-INSTALL-UUID': prefs['installation_uuid'],
         'CALIBRE-ICON-THEME': icon_theme_name,
     }
+    '''
+    headers={}
     try:
         version = get_https_resource_securely(URL, headers=headers)
     except ssl.SSLError as err:
