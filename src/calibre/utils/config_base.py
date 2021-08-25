@@ -548,7 +548,8 @@ def create_global_prefs(conf_obj=None):
 
 
 prefs = ConfigProxy(create_global_prefs())
-if prefs['installation_uuid'] is None:
+#if prefs['installation_uuid'] is None:
+if True:
     import uuid
     prefs['installation_uuid'] = unicode_type(uuid.uuid4())
 
