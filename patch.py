@@ -23,7 +23,7 @@ pattern = re.compile("headers={[\s\S]+}\n")
 file_path = os.path.join(root_path,"src/calibre/gui2/update.py")
 with open(file_path) as f:
     t = f.read()
-t = replace(t,pattern,"headers={}\n")
+t = replace(t,pattern,"headers={};return\n")
 with open(file_path,"w") as f:
     f.write(t)
 
