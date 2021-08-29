@@ -19,11 +19,11 @@ def replace(text,pattern,s):
     return text
 
 # update.py and collection.py
-pattern = re.compile("headers={[\s\S]+}\n")
+pattern = re.compile("headers=\{[^}]+\}")
 file_path = os.path.join(root_path,"src/calibre/gui2/update.py")
 with open(file_path) as f:
     t = f.read()
-t = replace(t,pattern,"headers={};return\n")
+t = replace(t,pattern,"headers={};return NO_CALIBRE_UPDATE")
 with open(file_path,"w") as f:
     f.write(t)
 
@@ -33,3 +33,4 @@ with open(file_path) as f:
 t = replace(t,pattern,"headers={}\n")
 with open(file_path,"w") as f:
     f.write(t)
+
